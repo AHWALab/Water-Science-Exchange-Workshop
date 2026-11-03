@@ -1,17 +1,22 @@
-# Module 3. Event based evaluation and forecast skill
+# Module 2. Distributed flash flood simulation
 
-Branch `module-3-evaluation` of the workshop repository for **Predicting Flash Floods in Working Landscapes**, CUAHSI Water Science Exchange 2026, Saturday November 14, 2026.
+Branch `module-2-ef5` of the workshop repository for **Predicting Flash Floods in Working Landscapes**, CUAHSI Water Science Exchange 2026, Saturday November 14, 2026.
 
-Instructors. Humberto Vergara, Mohamed Abdelkader and Santiago Henao Gomez, University of Iowa.
+Instructors. Santiago Henao Gomez, Mohamed Abdelkader and Humberto Vergara, University of Iowa.
 
 Materials for this module are being prepared and will appear on this branch before the meeting.
 
 ## Planned content
 
-- Observed hydrographs from USGS for the Rock River near Rock Valley and the Floyd River at Alton, June 2024
-- Why continuous scores mislead for a single event. A simulation that is 12 percent low and 5 hours early on the Floyd River has a negative Nash Sutcliffe efficiency
-- Event based metrics. Peak error, timing error, volume error, time to threshold
-- Forecast skill with lead time. What the rainfall latency measured in Module 1 costs in warning time
-- Comparing the simulations forced with radar only, Pass 1 and Pass 2 rainfall from Module 2
+- The Ensemble Framework for Flash Flood Forecasting (EF5) and its CREST water balance, as run in the NOAA FLASH system
+- A prepared container image, so nothing is compiled during the session. Docker Desktop must be installed and tested before arrival
+- Forcing the model with the MRMS rainfall prepared in Module 1 (radar only, Pass 1 and Pass 2) over the Floyd River basin at Alton and the Rock River basin near Rock Valley
+- Reading and mapping the outputs. Unit streamflow, soil saturation, simulated hydrographs at the USGS gauges
 
-Module 1 is on the branch `module-1-qpe`, Module 2 on `module-2-ef5`.
+## Setup, preliminary
+
+1. Install Docker Desktop and confirm that `docker run hello-world` works.
+2. Keep about 10 GB of free disk space.
+3. Clone this branch once it is populated.
+
+Module 1 is on the branch `module-1-qpe`, Module 3 on `module-3-evaluation`.
