@@ -1,0 +1,17 @@
+numpy
+pandas
+xarray
+netcdf4
+h5netcdf
+h5py
+eccodes
+cfgrib
+s3fs
+requests
+matplotlib
+cartopy
+pyproj
+scipy
+shapely>=2.0
+jupyterlab
+ipykernel

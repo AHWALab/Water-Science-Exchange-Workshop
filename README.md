@@ -1,50 +1,93 @@
-# Predicting Flash Floods in Working Landscapes
+# Module 1. Quantitative Precipitation Estimation
 
-Workshop materials for the CUAHSI Water Science Exchange 2026, University of Missouri, Saturday November 14, 2026, full day with a lunch break.
+Branch `module-1-qpe` of the workshop repository for **Predicting Flash Floods in Working Landscapes**, CUAHSI Water Science Exchange 2026, University of Missouri, Saturday November 14, 2026.
 
-Instructors. Santiago Henao Gomez, Mohamed Abdelkader and Humberto Vergara, University of Iowa, IIHR Hydroscience and Engineering and the Iowa Flood Center.
+Instructors. Mohamed Abdelkader, Humberto Vergara and Santiago Henao Gomez, University of Iowa, IIHR Hydroscience and Engineering and the Iowa Flood Center.
 
-## One repository, one branch per module
+The other modules live on their own branches. `module-2-ef5` (distributed simulation with EF5) and `module-3-evaluation` (event based evaluation and forecast skill). The `main` branch holds the overview and the setup instructions.
 
-The workshop has three two hour modules. Each module lives on its own branch so that participants can clone exactly what they need for the session in front of them.
+## Learning objectives
 
-| Module | Branch | Content |
+By the end of this module you will be able to
+
+1. Describe the main sources of precipitation estimates (rain gauge networks, weather radar, satellites, model analyses) and the multi-sensor products built from them.
+2. Access near real time precipitation products and gauge observations from public archives with Python, clip them to a region of interest, and compare them on a map.
+3. Explain the trade-off between latency and accuracy in operational QPE, and measure it directly in the archives.
+4. Evaluate radar-only and gauge-corrected rainfall estimates against independent gauges for a flash flood event.
+
+## Schedule, two hours
+
+| Time | Part | Material |
 |---|---|---|
-| 1. Quantitative Precipitation Estimation | `module-1-qpe` | Sources of precipitation data, access with Python, radar only against gauge corrected estimates for the June 2024 northwest Iowa flood |
-| 2. Distributed flash flood simulation | `module-2-ef5` | Running the EF5 model in a prepared container, forcing it with the Module 1 rainfall, reading its outputs |
-| 3. Event based evaluation and forecast skill | `module-3-evaluation` | Comparing simulated and observed hydrographs, event metrics, what rainfall latency does to lead time |
+| 0:00 to 0:20 | What is QPE. Instruments, networks, products, latency | `slides/` |
+| 0:20 to 0:50 | Where to find precipitation observations, guided tour | `notebooks/01_where_to_find_qpe_data.ipynb` |
+| 0:50 to 1:50 | One storm, three estimates. The June 2024 northwest Iowa flood | `notebooks/02_june2024_event_three_estimates.ipynb` |
+| 1:50 to 2:00 | Discussion, bridge to Module 2 | |
 
-Clone one module
-
-```
-git clone -b module-1-qpe https://github.com/AHWALab/Water-Science-Exchange-Workshop.git wse-module-1
-```
-
-Clone everything and switch between modules
+## Folder layout
 
 ```
-git clone https://github.com/AHWALab/Water-Science-Exchange-Workshop.git
+notebooks/
+    01_where_to_find_qpe_data.ipynb                participant version, with placeholders
+    01_where_to_find_qpe_data_solution.ipynb       instructor version, executed, with outputs
+    02_june2024_event_three_estimates.ipynb        participant version
+    02_june2024_event_three_estimates_solution.ipynb
+    qpe_tools.py                                   helper functions used by both notebooks
+data/cache/                                        pre-clipped fields and gauge tables, the notebooks run offline from here
+docs/qpe_data_catalog.md                           where to find precipitation data, with latencies and sources
+docs/references.md                                 reading list
+slides/QPE_theory_slide_content.md                 content of the opening talk, slide by slide
+tools/make_workshop_version.py                     builds the participant notebook from the solution notebook
+environment.yml, requirements.txt                  Python environment
+```
+
+## Setup
+
+Participants need Python 3.10 or newer with the packages in `requirements.txt`. The GRIB2 decoder (ecCodes) ships as a binary wheel, so a plain pip install works on Windows, macOS and Linux.
+
+Option A, conda or mamba
+
+```
+git clone -b module-1-qpe https://github.com/AHWALab/Water-Science-Exchange-Workshop.git
 cd Water-Science-Exchange-Workshop
-git checkout module-1-qpe
+conda env create -f environment.yml
+conda activate wse-qpe
+jupyter lab notebooks
 ```
 
-Each branch carries its own README with the schedule, the learning objectives and the setup steps for that module.
+Option B, pip in an existing environment
+
+```
+pip install -r requirements.txt
+```
+
+Option C, CUAHSI JupyterHub or any hosted Jupyter. Clone the branch in a terminal, open the notebooks, run the install cell at the top of each notebook once.
+
+Check the installation with
+
+```
+python -c "import eccodes, cfgrib, xarray, cartopy, s3fs; print('ready')"
+```
+
+## Data
+
+Everything downloads live from public archives without an account.
+
+- MRMS from the NOAA bucket `noaa-mrms-pds` on AWS and from the Iowa State University mtarchive mirror
+- NCEP Stage IV from the Iowa Environmental Mesonet archive
+- Gauges from the Iowa Environmental Mesonet (ASOS, ISU Soil Moisture Network, CoCoRaHS) and from NOAA NCEI (US Climate Reference Network)
+- GOES Rainfall Rate from the NOAA bucket `noaa-goes16`
+- Basin boundaries from the USGS Network Linked Data Index
+
+The helper functions keep a clipped copy of each field in `data/cache`. The repository ships with the cache filled for the workshop windows (about 11 MB), so both notebooks also run on a slow or absent network. Delete `data/cache` to force fresh downloads.
 
 ## The case study
 
-Flash flood of June 21 to 22, 2024, in northwest Iowa, southeast South Dakota and southwest Minnesota. Training thunderstorms dropped 150 to 250 mm in a few hours. The Rock River near Rock Valley (USGS 06483500) set a record of 157,000 cubic feet per second in 127 years of observations and the Floyd River at Alton (USGS 06600100) reached its highest flow since 1953. The three modules follow this event from rainfall to simulation to evaluation.
+Flash flood of June 21 to 22, 2024, in northwest Iowa, southeast South Dakota and southwest Minnesota. Rock River near Rock Valley (USGS 06483500) and Floyd River at Alton (USGS 06600100). The same event is simulated in Module 2 and evaluated in Module 3.
 
-## Before you arrive
+## Credits and licenses
 
-- Python and Jupyter basics, an introductory hydrology background
-- Accounts. GitHub, HydroShare, NASA Earthdata Login
-- Docker Desktop installed and tested before the workshop, with administrator rights on your laptop and about 10 GB of free disk (Module 2 ships the model as a prepared container image)
-- A laptop with a current browser
-
-Setup instructions for each module are in the branch README. Participants on the list receive them by email before the meeting.
-
-## Credits
-
-Data access patterns follow the Project Pythia MRMS Cookbook (CC BY 4.0). MRMS is produced by NOAA National Severe Storms Laboratory and NCEP. Gauge data are served by the Iowa Environmental Mesonet and NOAA NCEI. EF5 is developed by the University of Oklahoma and NOAA National Severe Storms Laboratory.
-
-Notebooks and code are released under the MIT license. Text and figures under CC BY 4.0.
+- Data access patterns follow the Project Pythia MRMS Cookbook (Janoski, Sears, Condo, Heaton, Collins and Grover), content CC BY 4.0, code Apache 2.0. https://projectpythia.org/mrms-cookbook/
+- MRMS is produced by NOAA National Severe Storms Laboratory and NCEP. Zhang, J. and coauthors, 2016, Bulletin of the American Meteorological Society, 97, 621 to 638.
+- Gauge data are served by the Iowa Environmental Mesonet, Iowa State University, and by NOAA NCEI.
+- Notebooks and code in this branch are released under the MIT license. Text and figures under CC BY 4.0.

@@ -1,0 +1,23 @@
+name: wse-qpe
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - numpy
+  - pandas
+  - xarray
+  - netcdf4
+  - h5netcdf
+  - h5py
+  - eccodes
+  - python-eccodes
+  - cfgrib
+  - s3fs
+  - requests
+  - matplotlib
+  - cartopy
+  - pyproj
+  - scipy
+  - shapely>=2.0
+  - jupyterlab
+  - ipykernel
