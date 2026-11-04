@@ -10,3 +10,4 @@ __pycache__/
 Thumbs.db
 # large local downloads outside the shipped cache
 data/raw/
+ef5-container.tar

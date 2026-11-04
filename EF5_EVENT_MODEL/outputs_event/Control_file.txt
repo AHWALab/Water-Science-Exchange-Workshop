@@ -1,0 +1,84 @@
+[Basic]
+DEM=basic/DEM.tif
+DDM=basic/DDM.tif
+FAM=basic/FAM.tif
+PROJ=geographic
+ESRIDDM=true
+SelfFAM=true
+
+
+######################### Precipitation forcing (MRMS) #########################
+[PrecipForcing MRMS]
+TYPE=TIF
+UNIT=mm/h
+FREQ=60u
+LOC=precip_MRMS_Pass2
+NAME=GaugeCorr_QPE_01H_00.00_YYYYMMDD-HHUU00.tif
+
+######################### PET forcing (Climatology) #########################
+[PETForcing CLIMO]
+LOC=ERA5_Adjusted
+FREQ=1m
+UNIT=mm/d
+NAME=adjPET.MM.tif
+TYPE=TIF
+
+######################### Gauges #########################
+
+[gauge 06605000] lat=43.1303606815675 lon=-95.2113096299924 obs=records/06605000_Q_1h_ef5_format.csv basinarea=1063.5629 outputts=true 
+
+[Basin 0]
+gauge=06605000
+
+
+######################### CREST parameter set (90m grids) #########################
+[CrestParamSet MyCRESTPAR_90]
+wm_grid=parameters/crest_Wm.tif
+b_grid=parameters/crest_b.tif
+im_grid=parameters/IM.tif
+fc_grid=parameters/crest_Fc_Ksat.tif
+
+gauge=06605000
+wm=1.00
+b=1.0
+im=0.01
+ke=1.0
+fc=1.00
+iwu=0.0
+
+######################### KW routing parameter set (90m grids) #########################
+[kwparamset MyKWPAR_90]
+alpha_grid=parameters/KW_alpha.tif
+beta_grid=parameters/KW_beta.tif
+alpha0_grid=parameters/KW_alpha0.tif
+under_grid=parameters/crest_Fc_Ksat.tif
+
+gauge=06605000
+alpha=1.0
+alpha0=1.0
+beta=1.0
+under=0.001
+leaki=0.03
+th=150.0
+isu=0.0
+
+[Task Simulation]
+STYLE=SIMU
+MODEL=crest
+ROUTING=KW
+BASIN=0
+PRECIP=MRMS
+PET=CLIMO
+OUTPUT=outputs_event
+STATES=states
+OUTPUT_GRIDS=MAXUNITSTREAMFLOW|MAXSTREAMFLOW|PRECIPACCUM
+defaultparamsgauge=06605000
+PARAM_SET=MyCRESTPAR_90
+ROUTING_PARAM_Set=MyKWPAR_90
+TIMESTEP=60u
+TIME_BEGIN=202406160000
+TIME_END=202406240000
+
+
+[Execute]
+task=SIMULATION
