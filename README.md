@@ -2,9 +2,10 @@
 
 This repository contains everything you need to run a flood event simulation with **EF5** (Ensemble Framework For Flash Flood Forecasting) using the **CREST** water-balance model and **kinematic wave (KW)** routing, for USGS gauge **06605000** in the Little Sioux River basin (Iowa).
 
-The workshop has three steps:
+The workshop has the following steps:
 
-1. **Install the EF5 Docker image** — no compiling needed.
+0. **Install Docker Desktop** — before the workshop.
+1. **Install the EF5 Docker image and download the data** — no compiling needed.
 2. **Generate the model parameters** — Jupyter notebooks in `PARAMETER_GENERATION/`.
 3. **Run the event simulation** — `EF5_EVENT_MODEL/`, which already includes all the computed parameters.
 
@@ -18,15 +19,25 @@ The workshop has three steps:
 | Software | Needed for | Source |
 |---|---|---|
 | **Docker Desktop** | Steps 1 and 3 | https://www.docker.com/products/docker-desktop/ |
-| **Python 3.10+**  | Step 2 | Recomended: Google Colab. Other: Jupyter (e.g. Anaconda/Miniconda) |
+| **Python 3.10+**  | Step 2 | Recommended: Google Colab. Other: Jupyter (e.g. Anaconda/Miniconda) |
+
+---
+
+## Step 0 (before workshop) — Install Docker Desktop
 
 Before the workshop, install Docker Desktop and open it once so it finishes its setup. On Windows it may ask you to enable WSL 2 and restart.
+
+1. **Download** Docker Desktop from the official website: [https://www.docker.com/products/docker-desktop/](https://www.docker.com/products/docker-desktop/)
+2. **Install** Docker Desktop on your computer.
+3. **Open** Docker Desktop and wait until it shows *Engine running*.
 
 > **Tip:** avoid spaces and accented characters in the folder where you place this repository (e.g. use `C:\EF5_Workshop`). Paths with spaces need extra quoting in Docker commands.
 
 ---
 
-## Step 1 — Install the EF5 Docker image
+## Step 1 — Install the EF5 Docker image and data download
+
+### 1.1 Install the EF5 image in Docker
 
 The EF5 image is distributed as a single file, `ef5-container.tar` (~110 MB).
 
@@ -49,6 +60,24 @@ The EF5 image is distributed as a single file, `ef5-container.tar` (~110 MB).
 Once loaded, you can delete the `.tar` file.
 
 > **Apple Silicon Macs (M1–M4) and ARM Windows laptops:** the image is built for Intel/AMD processors. It still works through emulation (a bit slower). You may see a warning like `The requested image's platform (linux/amd64) does not match the detected host platform`; it is harmless. Adding `--platform linux/amd64` to `docker run` (as in the commands below) silences it.
+
+### 1.2 Get the domain data
+
+#### Option A — Download ZIP
+
+1. **Download** the workshop repository as a ZIP file from GitHub [GitHub repository](https://github.com/AHWALab/Water-Science-Exchange-Workshop/tree/module-2-ef5), and unzip it.
+2. **Extract** the ZIP file to a folder on your computer.
+
+#### Option B — Clone from GitHub
+
+1. **Clone** the workshop repository from GitHub:
+   ```bash
+   git clone https://github.com/AHWALab/Water-Science-Exchange-Workshop/tree/module-2-ef5
+   ```
+2. **Navigate** to the workshop directory:
+   ```bash
+   cd EF5-Workshop
+   ```
 
 ---
 
@@ -151,7 +180,7 @@ Results are written to `EF5_EVENT_MODEL/outputs_event/`:
 | `qpeaccum.YYYYMMDD.HHMMSS.tif` | Accumulated precipitation over the event (mm) |
 | `results.json` | Run summary (run time, missing precipitation files) |
 
-Open the `.tif` grids in QGIS or Python (`rasterio`), and plot the `.csv` to compare simulated vs. observed hydrographs. An example figure is in `outputs_event/figures/`.
+Open the `.tif` grids in QGIS or Python (`rasterio`), and plot the `.csv` to compare simulated vs. observed hydrographs.
 
 ---
 
