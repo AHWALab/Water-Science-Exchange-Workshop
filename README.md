@@ -15,10 +15,10 @@ The workshop has three steps:
 
 ## Requirements
 
-| Software | Needed for | Download |
+| Software | Needed for | Source |
 |---|---|---|
 | **Docker Desktop** | Steps 1 and 3 | https://www.docker.com/products/docker-desktop/ |
-| **Python 3.10+** with Jupyter (e.g. Anaconda/Miniconda) | Step 2 | https://www.anaconda.com/download |
+| **Python 3.10+**  | Step 2 | Recomended: Google Colab. Other: Jupyter (e.g. Anaconda/Miniconda) |
 
 Before the workshop, install Docker Desktop and open it once so it finishes its setup. On Windows it may ask you to enable WSL 2 and restart.
 
@@ -30,7 +30,7 @@ Before the workshop, install Docker Desktop and open it once so it finishes its 
 
 The EF5 image is distributed as a single file, `ef5-container.tar` (~110 MB).
 
-1. **Download** `ef5-container.tar`, already located in this repository
+1. **Download** `ef5-container.tar`: [download link](https://iowa-my.sharepoint.com/:u:/g/personal/henaogomez_uiowa_edu/IQDKkPISGJB6R47jmfKj5UC5AZ3F6ZW9ZJRnVcqgA7D9maM?e=JQkNZY).
 2. **Open Docker Desktop** and wait until it shows *Engine running*.
 3. **Load the image.** Open a terminal (PowerShell on Windows, Terminal on macOS/Linux) in the folder where you saved the file:
 
@@ -58,22 +58,13 @@ EF5 needs gridded parameters for the water-balance model (CREST) and the routing
 
 ### 2.1 Set up Google Colab
 
+1. Open [Google Colab](https://colab.research.google.com/).
+2. Click **File → Upload notebook** and select the notebook you want to run (e.g., `4_Crest_parameters_estimation.ipynb` or `KW_PINN_Predict.ipynb`).
+3. Click **Runtime → Run all** to execute the entire notebook.
 
+### 2.2 CREST parameters — `4_Crest_parameters_estimation.ipynb`
 
-### 2.2 Open the notebooks
-
-Start Jupyter **from inside the `PARAMETER_GENERATION` folder**. The notebooks use the current working directory to find `soil/`, `basic/`, `predictors/` and `models/`:
-
-```powershell
-cd PARAMETER_GENERATION
-jupyter lab
-```
-
-When a notebook opens, select your `ef5_workshop` environment (or your default Python 3) as the kernel.
-
-### 2.3 CREST parameters — `4_Crest_parameters_estimation.ipynb`
-
-Computes CREST soil parameters from SoilGrids sand and clay content (7 depths) and depth to bedrock:
+This notebook is part of the EF5 parameter generation workflow, from [GitHub repository EF5-builder-toolkit](https://github.com/AHWALab/EF5-builder-toolkit). It computes CREST soil parameters from SoilGrids sand and clay content (7 depths) and depth to bedrock:
 
 | Output (in `parameters/`) | Parameter |
 |---|---|
@@ -82,11 +73,10 @@ Computes CREST soil parameters from SoilGrids sand and clay content (7 depths) a
 | `crest_Fc_Ksat.tif` | Soil saturated hydraulic conductivity (Fc / Ksat) |
 
 Notes:
-- The **"Resample the grids if needed"** section at the top is not needed for this workshop; the inputs are already prepared.
-- **Skip the Google Colab cell if you are running a local version of Python** (`from google.colab import files`) when running on your own computer. It only works in Colab and will raise an error locally.
+- **Skip the Google Colab cell if you are running a local version of Python** (`from google.colab import files`) when running on your own computer.
 - If the `parameters/` folder does not exist, create it before saving the outputs.
 
-### 2.4 KW routing parameters — `KW_PINN_Predict.ipynb`
+### 2.3 KW routing parameters — `KW_PINN_Predict.ipynb`
 
 Predicts the kinematic-wave rating-curve parameters **α (alpha)** and **β (beta)** with a pre-trained physics-informed neural network (KW-PINN, CONUS model v1.10). It uses basin descriptors in `predictors/` (drainage area, relief ratio, mean annual precipitation and temperature, aridity index, Manning's n). Predictions are made only on channel cells (`FAM > 50`).
 
@@ -180,3 +170,12 @@ Open the `.tif` grids in QGIS or Python (`rasterio`), and plot the `.csv` to com
 ---
 
 ## Credits
+Santiago Henao-Gomez, University of Iowa, santiago-henao-gomez@uiowa.edu.
+
+Humberto Vergara, University of Iowa, humberto-vergaraarrieta@uiowa.edu.
+
+Mohamed Abdelkader, University of Iowa, mohamed-abdelkader@uiowa.edu.
+
+Vanessa Robledo, University of Iowa, vanessa-robledodelgado@uiowa.edu.
+
+Meet the research team: [AHWA Lab](https://ahwa.lab.uiowa.edu/)
