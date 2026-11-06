@@ -11,7 +11,7 @@ The workshop has the following steps:
 
 > Step 3 does **not** depend on Step 2. If you are short on time, you can go directly from Step 1 to Step 3.
 
-![Satellite](figures\satellite.png) Little Sioux River basin at Smithland.
+![Satellite](https://github.com/AHWALab/Water-Science-Exchange-Workshop/blob/module-2-ef5/figures/satellite.png) Little Sioux River basin at Smithland.
 
 
 ---
@@ -46,7 +46,7 @@ The EF5 image is distributed as a single file, `ef5-container.tar` (~110 MB).
 1. **Download** `ef5-container.tar`: [download link](https://iowa-my.sharepoint.com/:u:/g/personal/henaogomez_uiowa_edu/IQDKkPISGJB6R47jmfKj5UC5AZ3F6ZW9ZJRnVcqgA7D9maM?e=JQkNZY).
 2. **Open Docker Desktop** and wait until it shows *Engine running*.
 
-![Engine running](figures\docker_engine_running.png) Engine running screenshot.
+![Engine running](https://github.com/AHWALab/Water-Science-Exchange-Workshop/blob/module-2-ef5/figures/docker_engine_running.png) Engine running screenshot.
 
 3. **Load the image.** Open a terminal (PowerShell on Windows, Terminal on macOS/Linux) in the folder where you saved the file:
 
@@ -187,7 +187,7 @@ Results are written to `EF5_EVENT_MODEL/outputs_event/`:
 
 Open the `.tif` grids in QGIS or Python (`rasterio`), and plot the `.csv` to compare simulated vs. observed hydrographs.
 
-![Results](figures\ts.06605000.png) Simulated and observed hydrographs at USGS gauge 06605000 (Little Sioux River at Smithland, IA).
+![Results](https://github.com/AHWALab/Water-Science-Exchange-Workshop/blob/module-2-ef5/figures/ts.06605000.png) Simulated and observed hydrographs at USGS gauge 06605000 (Little Sioux River at Smithland, IA).
 
 ---
 
