@@ -1,6 +1,6 @@
 # EF5 Event Simulation Workshop — Little Sioux River (June 2024)
 
-This repository contains everything you need to run a flood event simulation with **EF5** (Ensemble Framework For Flash Flood Forecasting) using the **CREST** water-balance model and **kinematic wave (KW)** routing, for USGS gauge **06605000** in the Little Sioux River basin (Iowa).
+This repository contains everything you need to run a flood event simulation with **EF5** [^1] (Ensemble Framework For Flash Flood Forecasting) using the **CREST** water-balance model and **kinematic wave (KW)** routing, for USGS gauge **06605000** in the Little Sioux River basin (Iowa).
 
 The workshop has the following steps:
 
@@ -215,3 +215,5 @@ Mohamed Abdelkader, University of Iowa, mohamed-abdelkader@uiowa.edu.
 Vanessa Robledo, University of Iowa, vanessa-robledodelgado@uiowa.edu.
 
 Meet the research team: [AHWA Lab](https://ahwa.lab.uiowa.edu/)
+
+[^1]: Flamig, Z. L., Vergara, H., & Gourley, J. J. (2020). The Ensemble Framework For Flash Flood Forecasting (EF5) v1.2: description and case study. Geosci. Model Dev., 13(10), 4943–4958. https://doi.org/10.5194/gmd-13-4943-2020 
