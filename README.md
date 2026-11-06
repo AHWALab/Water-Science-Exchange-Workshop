@@ -22,12 +22,12 @@ The workshop has the following steps:
 |---|---|---|
 | **Docker Desktop** | Steps 1 and 3 | https://www.docker.com/products/docker-desktop/ |
 | **Python 3.10+**  | Step 2 | Recommended: Google Colab. Other: Jupyter (e.g. Anaconda/Miniconda) |
-
+| **QGIS** | Optional, for visualizing outputs | https://qgis.org/ |
 ---
 
 ## Step 0 (before workshop) — Install Docker Desktop
 
-Before the workshop, install Docker Desktop and open it once so it finishes its setup. On Windows it may ask you to enable WSL 2 and restart.
+👉 Before the workshop, install Docker Desktop and open it once so it finishes its setup. On Windows it may ask you to enable WSL 2 and restart.
 
 1. **Download** Docker Desktop from the official website: [https://www.docker.com/products/docker-desktop/](https://www.docker.com/products/docker-desktop/)
 2. **Install** Docker Desktop on your computer.
@@ -39,7 +39,7 @@ Before the workshop, install Docker Desktop and open it once so it finishes its 
 
 ## Step 1 — Install the EF5 Docker image and data download
 
-### 1.1 Install the EF5 image in Docker
+### 1.1 👉 Install the EF5 image in Docker
 
 The EF5 image is distributed as a single file, `ef5-container.tar` (~110 MB).
 
@@ -66,7 +66,7 @@ Once loaded, you can delete the `.tar` file.
 
 > **Apple Silicon Macs (M1–M4) and ARM Windows laptops:** the image is built for Intel/AMD processors. It still works through emulation (a bit slower). You may see a warning like `The requested image's platform (linux/amd64) does not match the detected host platform`; it is harmless. Adding `--platform linux/amd64` to `docker run` (as in the commands below) silences it.
 
-### 1.2 Get the domain data
+### 1.2 👉 Get the domain data
 
 #### Option A — Download ZIP
 
@@ -90,13 +90,13 @@ Once loaded, you can delete the `.tar` file.
 
 EF5 needs gridded parameters for the water-balance model (CREST) and the routing (KW). This step shows how they are derived from soil and basin data. Ready-made results already exist in `EF5_EVENT_MODEL/parameters/`.
 
-### 2.1 Set up Google Colab
+### 2.1 👉 Set up Google Colab
 
 1. Open [Google Colab](https://colab.research.google.com/).
 2. Click **File → Upload notebook** and select the notebook you want to run (e.g., `4_Crest_parameters_estimation.ipynb` or `KW_PINN_Predict.ipynb`).
 3. Click **Runtime → Run all** to execute the entire notebook.
 
-### 2.2 CREST parameters — `4_Crest_parameters_estimation.ipynb`
+### 2.2 CREST parameters — 👉🐍 `PARAMETER_GENERATION/4_Crest_parameters_estimation.ipynb`
 
 This notebook is part of the EF5 parameter generation workflow, from [GitHub repository EF5-builder-toolkit](https://github.com/AHWALab/EF5-builder-toolkit). It computes CREST soil parameters from SoilGrids sand and clay content (7 depths) and depth to bedrock:
 
@@ -110,7 +110,7 @@ Notes:
 - **Skip the Google Colab cell if you are running a local version of Python** (`from google.colab import files`) when running on your own computer.
 - If the `parameters/` folder does not exist, create it before saving the outputs.
 
-### 2.3 KW routing parameters — `KW_PINN_Predict.ipynb`
+### 2.3 KW routing parameters — 👉🐍 `PARAMETER_GENERATION/KW_PINN_Predict.ipynb`
 
 Predicts the kinematic-wave rating-curve parameters **α (alpha)** and **β (beta)** with a pre-trained physics-informed neural network (KW-PINN, CONUS model v1.10). It uses basin descriptors in `predictors/` (drainage area, relief ratio, mean annual precipitation and temperature, aridity index, Manning's n). Predictions are made only on channel cells (`FAM > 50`).
 
@@ -140,7 +140,7 @@ The control file `EF5_EVENT_MODEL/outputs_event/Control_file.txt` defines:
 
 All paths in the control file are **relative to the `EF5_EVENT_MODEL` folder**, so the model must be run from there.
 
-### 3.2 Run EF5
+### 3.2 👉 Run EF5
 
 Open a terminal **inside the `EF5_EVENT_MODEL` folder** and run:
 
@@ -185,7 +185,11 @@ Results are written to `EF5_EVENT_MODEL/outputs_event/`:
 | `qpeaccum.YYYYMMDD.HHMMSS.tif` | Accumulated precipitation over the event (mm) |
 | `results.json` | Run summary (run time, missing precipitation files) |
 
-Open the `.tif` grids in QGIS or Python (`rasterio`), and plot the `.csv` to compare simulated vs. observed hydrographs.
+#### 3.3.1 Plot results
+
+Plot the `.csv` to compare simulated vs. observed hydrographs 👉🐍 `EF5_EVENT_MODEL/Plot_results.ipynb`.
+
+Optional: open the `.tif` grids in QGIS or Python (`rasterio`).
 
 ![Results](https://github.com/AHWALab/Water-Science-Exchange-Workshop/blob/module-2-ef5/figures/ts.06605000.png) Simulated and observed hydrographs at USGS gauge 06605000 (Little Sioux River at Smithland, IA).
 
@@ -206,7 +210,7 @@ Open the `.tif` grids in QGIS or Python (`rasterio`), and plot the `.csv` to com
 ---
 
 ## Credits
-Santiago Henao-Gomez, University of Iowa, santiago-henao-gomez@uiowa.edu.
+Santiago Henao-Gomez, University of Iowa, santiago-henaogomez@uiowa.edu.
 
 Humberto Vergara, University of Iowa, humberto-vergaraarrieta@uiowa.edu.
 
