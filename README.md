@@ -1,6 +1,6 @@
 # EF5 Event Simulation Workshop — Little Sioux River (June 2024)
 
-This repository contains everything you need to run a flood event simulation with **EF5** [^1] (Ensemble Framework For Flash Flood Forecasting) using the **CREST** water-balance model and **kinematic wave (KW)** routing, for USGS gauge **06605000** in the Little Sioux River basin (Iowa).
+This repository contains everything you need to run a flood event simulation with **EF5**[^1] (Ensemble Framework For Flash Flood Forecasting) using the **CREST**[^2] water-balance model and **kinematic wave (KW)**[^3] routing, for USGS gauge **06605000** in the Little Sioux River basin (Iowa).
 
 The workshop has the following steps:
 
@@ -133,7 +133,7 @@ The control file `EF5_EVENT_MODEL/outputs_event/Control_file.txt` defines:
 |---|---|
 | Model / routing | CREST + kinematic wave |
 | Gauge | USGS 06605000 (lat 43.1304, lon −95.2113), basin area ≈ 1,064 km² |
-| Precipitation | MRMS Pass 2 gauge-corrected QPE, hourly |
+| Precipitation | MRMS Pass 2 gauge-corrected QPE, hourly[^4] |
 | PET | ERA5-adjusted monthly climatology |
 | Period | 2024-06-16 00:00 → 2024-06-24 00:00 (hourly time step) |
 | Initial states | `states/` (warm start at 2024-06-16 00:00) |
@@ -216,4 +216,10 @@ Vanessa Robledo, University of Iowa, vanessa-robledodelgado@uiowa.edu.
 
 Meet the research team: [AHWA Lab](https://ahwa.lab.uiowa.edu/)
 
-[^1]: Flamig, Z. L., Vergara, H., & Gourley, J. J. (2020). The Ensemble Framework For Flash Flood Forecasting (EF5) v1.2: description and case study. Geosci. Model Dev., 13(10), 4943–4958. https://doi.org/10.5194/gmd-13-4943-2020 
+[^1]: Flamig, Z. L., Vergara, H., & Gourley, J. J. (2020). The Ensemble Framework For Flash Flood Forecasting (EF5) v1.2: description and case study. Geosci. Model Dev., 13(10), 4943–4958. https://doi.org/10.5194/gmd-13-4943-2020
+
+[^2]: Wang, J., Hong, Y., Li, L., Gourley, J. J., Khan, S. I., Yilmaz, K. K., Adler, R. F., Policelli, F. S., Habib, S., Irwn, D., Limaye, A. S., Korme, T., & Okello, L. (2011). The coupled routing and excess storage (CREST) distributed hydrological model. Hydrological Sciences Journal, 56(1), 84–98. https://doi.org/10.1080/02626667.2010.543087
+
+[^3]: Vergara, H., Kirstetter, P.-E., Gourley, J. J., Flamig, Z. L., Hong, Y., Arthur, A., & Kolar, R. (2016). Estimating a-priori kinematic wave model parameters based on regionalization for flash flood forecasting in the Conterminous United States. Journal of Hydrology, 541, 421–433. https://doi.org/https://doi.org/10.1016/j.jhydrol.2016.06.011
+
+[^4]: Zhang, J., Howard, K., Langston, C., Kaney, B., Qi, Y., Tang, L., Grams, H., Wang, Y., Cocks, S., Martinaitis, S., Arthur, A., Cooper, K., Brogden, J., & Kitzmiller, D. (2016). Multi-Radar Multi-Sensor (MRMS) Quantitative Precipitation Estimation: Initial Operating Capabilities. Bulletin of the American Meteorological Society, 97(4), 621–638. https://doi.org/https://doi.org/10.1175/BAMS-D-14-00174.1
