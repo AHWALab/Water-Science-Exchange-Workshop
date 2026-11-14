@@ -19,7 +19,7 @@ A flood forecast is only useful if we can say how good it is. In this module par
 
 1. Open notebook 1 with the badge below and run the cells from top to bottom. Continue with notebooks 2, 3 and 4.
 2. The first cell of every notebook copies this branch to the Colab machine. No account is needed, the repository is public.
-3. Each notebook ends with a short block marked `Your Code Goes Here`. The `_solution` notebooks hold the completed block and every output.
+3. Each notebook ends with a short block marked `Your Code Goes Here`. The activity of each notebook is solved in a short separate notebook, `N1_solution` to `N4_solution`, and the `_solution` notebooks hold the full notebooks executed with every output.
 
 ## The notebooks
 
@@ -32,7 +32,16 @@ Run them in order. Each one rebuilds what it needs from the previous ones in a f
 | 3 | Did we call the event | Contingency table, POD, FAR, POFD and CSI, decision thresholds, the ROC curve and its area, the performance diagram | 30 min | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AHWALab/Water-Science-Exchange-Workshop/blob/module-3-evaluation/notebooks/03_did_we_call_the_event.ipynb) |
 | 4 | Are the probabilities trustworthy | Brier score and skill score, reliability diagram, rank histogram, CRPS, and a recalibrated ensemble that fixes what the scores found | 30 min | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AHWALab/Water-Science-Exchange-Workshop/blob/module-3-evaluation/notebooks/04_are_the_probabilities_trustworthy.ipynb) |
 
-Solution versions with outputs: [notebook 1](notebooks/01_model_and_control_run_solution.ipynb), [notebook 2](notebooks/02_ensemble_to_probability_solution.ipynb), [notebook 3](notebooks/03_did_we_call_the_event_solution.ipynb), [notebook 4](notebooks/04_are_the_probabilities_trustworthy_solution.ipynb).
+Activity solutions, short notebooks that rebuild only what the activity needs and run on their own in seconds
+
+| | Activity solved | Open |
+|---|---|---|
+| N1 | Sweep the split parameter Alp and report how far the peak moves | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AHWALab/Water-Science-Exchange-Workshop/blob/module-3-evaluation/notebooks/N1_solution.ipynb) |
+| N2 | Probability of exceedance from 20 members against 100 members | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AHWALab/Water-Science-Exchange-Workshop/blob/module-3-evaluation/notebooks/N2_solution.ipynb) |
+| N3 | The decision threshold with the best CSI and its full set of scores | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AHWALab/Water-Science-Exchange-Workshop/blob/module-3-evaluation/notebooks/N3_solution.ipynb) |
+| N4 | The control run scored as a 0 or 1 probability forecast against both ensembles | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AHWALab/Water-Science-Exchange-Workshop/blob/module-3-evaluation/notebooks/N4_solution.ipynb) |
+
+Full notebooks executed with every output: [notebook 1](notebooks/01_model_and_control_run_solution.ipynb), [notebook 2](notebooks/02_ensemble_to_probability_solution.ipynb), [notebook 3](notebooks/03_did_we_call_the_event_solution.ipynb), [notebook 4](notebooks/04_are_the_probabilities_trustworthy_solution.ipynb).
 
 ## Learning objectives
 
@@ -80,6 +89,7 @@ notebooks/
   02_ensemble_to_probability.ipynb             and its _solution
   03_did_we_call_the_event.ipynb               and its _solution
   04_are_the_probabilities_trustworthy.ipynb   and its _solution
+  N1_solution.ipynb to N4_solution.ipynb       the four activities, solved, each runs on its own
   hymod_tools.py           the model, the scores and the ensemble generator, meant to be read
   nb_style.py              one plotting style for the four notebooks
   LeafCatch.dat            the Leaf River data
