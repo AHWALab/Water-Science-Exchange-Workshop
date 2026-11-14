@@ -19,7 +19,7 @@ A flash flood model is only as good as the rain it is given. In this module part
 
 1. Open notebook 1 with the badge below and run the cells from top to bottom. Continue with notebook 2.
 2. The first cell of every notebook copies this branch to the Colab machine and installs the two libraries Colab lacks (about one minute). No account is needed, the repository is public.
-3. Each notebook ends with a guided activity in blocks marked `Your Code Goes Here`. The `_solution` notebooks hold the completed blocks and every output.
+3. Each notebook ends with a guided activity in blocks marked `Your Code Goes Here`. The activity of each notebook is solved in a short separate notebook, `N1_solution` and `N2_solution`, and the `_solution` notebooks hold the full notebooks executed with every output.
 
 ## The notebooks
 
@@ -28,7 +28,14 @@ A flash flood model is only as good as the rain it is given. In this module part
 | 1 | Where to find precipitation observations | MRMS from the NOAA bucket on AWS, step by step, and from the Iowa State mirror. Latency measured from the archive itself. NCEP Stage IV. Four gauge networks (airports, Iowa mesonet, NOAA USCRN, CoCoRaHS). GOES satellite rain rate against radar | 30 min | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AHWALab/Water-Science-Exchange-Workshop/blob/module-1-qpe/notebooks/01_where_to_find_qpe_data.ipynb) |
 | 2 | One storm, three estimates | 24 hours of the June 2024 flood as radar only, Pass 1 and Pass 2. Where the gauges acted. Storm totals against hourly gauges and against independent volunteer gauges. Basin rainfall for the Floyd River. The forecaster at 6 am | 60 min | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AHWALab/Water-Science-Exchange-Workshop/blob/module-1-qpe/notebooks/02_june2024_event_three_estimates.ipynb) |
 
-Solution versions with outputs: [notebook 1](notebooks/01_where_to_find_qpe_data_solution.ipynb), [notebook 2](notebooks/02_june2024_event_three_estimates_solution.ipynb).
+Activity solutions, short notebooks that rebuild only what the activity needs and run on their own
+
+| | Activity solved | Open |
+|---|---|---|
+| N1 | Another hour and another gauge against the three MRMS products | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AHWALab/Water-Science-Exchange-Workshop/blob/module-1-qpe/notebooks/N1_solution.ipynb) |
+| N2 | The forecaster at 06:30 UTC, what each product showed against the final amount | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AHWALab/Water-Science-Exchange-Workshop/blob/module-1-qpe/notebooks/N2_solution.ipynb) |
+
+Full notebooks executed with every output: [notebook 1](notebooks/01_where_to_find_qpe_data_solution.ipynb), [notebook 2](notebooks/02_june2024_event_three_estimates_solution.ipynb).
 
 ## Learning objectives
 
@@ -87,6 +94,8 @@ notebooks/
   01_where_to_find_qpe_data_solution.ipynb        executed, with the completed activity
   02_june2024_event_three_estimates.ipynb         participant version
   02_june2024_event_three_estimates_solution.ipynb
+  N1_solution.ipynb        the activity of notebook 1, solved, runs on its own
+  N2_solution.ipynb        the activity of notebook 2, solved, runs on its own
   qpe_tools.py             helper functions, documented and meant to be read
 data/cache/                pre-clipped fields and gauge tables for the workshop windows
 docs/
