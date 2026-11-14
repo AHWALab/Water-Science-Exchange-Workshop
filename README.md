@@ -25,6 +25,16 @@ The workshop has the following steps:
 | **QGIS** | Optional, for visualizing the outputs | https://qgis.org/ |
 ---
 
+## Download the data
+
+Docker container & model files: [HYDROSHARE](https://www.hydroshare.org/resource/bcef1eec8edf4620a4c07103f7971424/)
+
+Docker container: [OneDrive](https://iowa-my.sharepoint.com/:u:/g/personal/henaogomez_uiowa_edu/IQDKkPISGJB6R47jmfKj5UC5AZ3F6ZW9ZJRnVcqgA7D9maM?e=JQkNZY)
+
+Model files: current repository.
+
+---
+
 ## Step 0. Install Docker Desktop (before the workshop)
 
 👉 Before the workshop, install Docker Desktop and open it once so that it finishes its setup. On Windows it may ask you to enable WSL 2 and to restart the computer.
@@ -192,6 +202,8 @@ Plot the `.csv` file to compare the simulated and observed hydrographs with the 
 Optional: open the `.tif` grids in QGIS or in Python (`rasterio`).
 
 ![Results](https://github.com/AHWALab/Water-Science-Exchange-Workshop/blob/module-2-ef5/figures/ts.06605000.png) Simulated and observed hydrographs at USGS gauge 06605000 (Little Sioux River at Smithland, IA).
+
+![Results](https://github.com/AHWALab/Water-Science-Exchange-Workshop/blob/module-2-ef5/figures/maxunitq.png) Maximum Unit Streamflow.
 
 ---
 
